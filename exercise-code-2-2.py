@@ -2,7 +2,7 @@
 seq = "MNKMDLVADVAEKTDLSKAKATEVIDAVFA"
 
 # Display hardcoded sequence
-print("The default sequence is: {}\n with length: {}".format(seq, len(seq)))
+print("The default sequence is: {}\nwith length: {}".format(seq, len(seq)))
 
 # Perform slicing operation on the sequence
 
