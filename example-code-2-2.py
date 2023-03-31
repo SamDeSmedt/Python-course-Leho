@@ -17,7 +17,7 @@ sci = -87.7e4
 print(sci, type(sci))
 sci2 = 2.3e-3
 print(sci2, type(sci2))
-
+'''
 # Useful numeric modules in Python
 import math
 print("\nFrom math: ")
@@ -31,3 +31,4 @@ chosen = random.choice([1, 2, 3, 4, 5, 6, 7, 8, 9])
 print("\nA number chosen between 0 and 10: ", chosen)
 chosen2 = random.choice([1, 2, 3, 4, 5, 6, 7, 8, 9])
 print("\nA 2nd number chosen between 0 and 10: ", chosen2)
+'''

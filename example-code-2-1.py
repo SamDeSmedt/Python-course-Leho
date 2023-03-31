@@ -14,6 +14,7 @@ print(myFloat)
 print(myString)
 
 print("\nType of these variables:")
+print("===========================")
 print(myInteger, type(myInteger))
 print(myFloat, type(myFloat))
 print(myString, type(myString))
