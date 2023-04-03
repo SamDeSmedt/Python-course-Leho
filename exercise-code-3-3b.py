@@ -3,7 +3,7 @@
 
 from random import randrange
 randomNo = 0
-guessNo = 3
+guessNo = 1
 
 while randomNo != guessNo:
     guessNo = int(input("Guess the number between 1 and 9: "))
