@@ -5,9 +5,12 @@ x = 0
 y = 1
 z = 0
 
-while z < 50:
-    print(z)
-    z = x + y
+end = int(input("Provide a number for the Fibonacci series to end: "))
+while x < end:
+    print("{} + {} = {}".format(x,y,z))
+    
+    #update variables
     x = y
     y = z
+    z = x + y
     
