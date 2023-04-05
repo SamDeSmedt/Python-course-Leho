@@ -12,7 +12,7 @@ for word in listWords:
     #print("size = {}".format(size))
     #print(word[0] + word[-1])
 
-    if size > 2 and (word[0]== word[-1]):
+    if size >= 2 and (word[0]== word[-1]):
         listSorted.append(word)
         count = count +1
 
