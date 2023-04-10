@@ -4,7 +4,7 @@
 import re
 
 while True:
-    passwd = input("EGiva a valid password: ")
+    passwd = input("Give a valid password: ")
     if (6 <= len(passwd) <= 16)\
         and (any(c.islower() for c in passwd)\
         and any(c.isupper() for c in passwd)\
