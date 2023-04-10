@@ -17,4 +17,12 @@ def string_reverse(FwStr):
         index = index -1
     return RvStr
 
-print(string_reverse("meetsysteemstrook"))
+FwStr = input("Provide a word to be reversed: \n")
+print(string_reverse(FwStr))
+###############################################################
+'''
+def string_reverse(str1):
+    return str1[::-1]
+print("Reverse of live desserts = ", end=" ")
+print(string_reverse("live desserts"))
+'''
