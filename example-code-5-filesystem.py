@@ -17,8 +17,8 @@ print("\nCurrent working directory: ", os.getcwd())
 # Change directory to location and print again
 print("Changing directory to HTA folder...")
 # location = "/home/pacoh/Dropbox/howest/PYTHON/HTA/"
-location = "/media/sf_VMshare/Python-scripts/HTA/"
-os.chdir(location)
+location = "/media/sf_VMshare/Python-scripts/HTA/" #Usefull to not hardcode this part but to ask for input
+os.chdir(location) #Does not change the pwd in the terminal
 print("\nCurrent working directory: ", os.getcwd())
 ################################################################################
 # Create a new folder
@@ -78,4 +78,4 @@ iternames = glob.iglob("/media/sf_VMshare/Python-scripts/**/*.py",recursive=True
 #iternames = glob.iglob("/media/sf_VMshare/BIT04-R/**/*.Rmd",recursive=True)
 for filename in iternames:
     print(filename)
-################################################################################
+###############################################################################
