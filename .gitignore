@@ -5,3 +5,9 @@
 
 # Ignore zip files
 *.zip
+
+# Ignore csv files
+*.csv
+
+# Ignore txt files
+*.txt
