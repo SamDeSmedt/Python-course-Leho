@@ -2,3 +2,6 @@
 129P2_vcf_head100.txt
 129P2_OlaHsd.mgp.v5.indels.dbSNP142.normed.vcf
 129P2_100000lines.vcf
+
+# Ignore zip files
+*.zip
