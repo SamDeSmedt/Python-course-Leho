@@ -44,11 +44,11 @@ table = document.add_table(rows=1, cols=3)
 table.style = 'LightShading-Accent1'
 # Table data
 genes = (
-    (7124, 'TNF', 'tumor necrosis factor'),
-    (4049, 'LTA', 'lymphotoxin alpha'),
-    (4050, 'LTB', 'lymphotoxin beta'),
-    (7132, 'TNFRSF1A', 'TNF receptor superfamily member 1A'),
-    (8743, 'TNFSF10', 'TNF superfamily member 10')
+    ("7124", 'TNF', 'tumor necrosis factor'),
+    ("4049", 'LTA', 'lymphotoxin alpha'),
+    ("4050", 'LTB', 'lymphotoxin beta'),
+    ("7132", 'TNFRSF1A', 'TNF receptor superfamily member 1A'),
+    ("8743", 'TNFSF10', 'TNF superfamily member 10')
 )
 # Header row
 hdr_cells = table.rows[0].cells
