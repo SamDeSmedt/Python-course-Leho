@@ -12,9 +12,10 @@ ws = wb.active
 # Append headers to excel file
 ws.append(["sample_id","filesize"])
 
-# Use present working direction to work with the folder
 # Create the pathway to the correct directory
-location = os.getcwd() # Use the pwd as directory to work in
+location = "/home/guest/Python/Files" # Use the pwd as directory to work i
+# Use file directory to work with the folder
+os.chdir(location)
 #print(location)
 file_loc = location + "/exercise-5-2-htseqcount/" 
 print("Files and folders in {} :\n".format(file_loc))
