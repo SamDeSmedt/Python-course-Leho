@@ -11,5 +11,8 @@
 # Ignore txt files
 *.txt
 
-#ignore excel files
+# Ignore excel files
 *.xlsx
+
+# Ignore dbs
+*.db

@@ -9,7 +9,7 @@ conn = sqlite3.connect('taxonomy.db')
 # and call its execute() method to perform SQL query
 c = conn.cursor()
 # Create table
-try:
+try: # Test the code
     c.execute('''CREATE TABLE organisms \
             (org_id, latin_name, common_name, tax_id, kingdom, phylum, ordr)''')
 except sqlite3.OperationalError:

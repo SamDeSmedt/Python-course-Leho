@@ -2,6 +2,7 @@
 ################################################################################
 # SQLite3 (example-code-6-sqlite-2.py)
 ################################################################################
+import sqlite3
 # Reconnect again and query
 print("\nReconnect again with taxonomy.db and run queries:")
 conn2 = sqlite3.connect('taxonomy.db')
@@ -10,13 +11,13 @@ c2 = conn2.cursor()
 print("\nFirst query using fetchone:")
 keyword = ('Chordata',)
 c2.execute('SELECT * FROM organisms WHERE phylum=?', keyword)
-print(c2.fetchone())
-print(c2.fetchone())
+print(c2.fetchone()) # Give the first record
+print(c2.fetchone()) # Give the second record
 # Second query using fetchall
 print("\nSecond query using fetchall:")
 keyword = ('Arthropoda',)
 c2.execute('SELECT * FROM organisms WHERE phylum=?', keyword)
-print(c2.fetchall())
+print(c2.fetchall()) # Get all the records that match the query
 ################################################################################
 # Query using iterator
 print("\nQuery using iterator:")
