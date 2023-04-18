@@ -4,6 +4,9 @@ import os
 import fnmatch
 import re
 from docx import Document
+# Adding an image
+# default appears at native size calculated as pixels/dpi
+from docx.shared import Inches, Cm
 
 # Opening a blank document based on default template
 document = Document()
@@ -40,16 +43,32 @@ for file in fastqc_list:
                             TotalSeq = line.split("\t")
                             document.add_paragraph("{} \t {}".format(TotalSeq[0], TotalSeq[1]))
                 fileObj.close()
+            # Collect data from the summary file
             elif re.match("summary", info):
                 with open((file_dir + info), "r") as fileObj2:
                     for line in fileObj2:
                         if re.search("Basic Statistics",line) or re.search("Per base sequence quality",line):
                             TotalSeq = line.split("\t")
                             document.add_paragraph("{} \t {}".format(TotalSeq[1], TotalSeq[0]))
-                fileObj2.close()   
-                
-# Adding a page break
-document.add_page_break()
+                            #Add empty paragraph for spacing
+                    document.add_paragraph("")
+        fileObj2.close()
+        # collect the image for each sampleId
+        for info in fnmatch.filter(file_list,"Images"):
+            #print(info)
+            # Create the directory of where all the images are stored
+            images_dir = file_dir + info
+            #print(images_dir)
+            # Create list of all the files available in the directory
+            image_list = os.listdir(images_dir)
+            #print(image_list)
+            for image in image_list:
+                # Adjust the specified pathway for each image
+                image_loc = images_dir + "/" + image
+                if re.search("per_base_quality.png",image):
+                    document.add_picture(image_loc, width=Cm(16))               
+        # Adding a page break
+        document.add_page_break()
 
 # Save document
 document.save('fastqc_summary.docx')
