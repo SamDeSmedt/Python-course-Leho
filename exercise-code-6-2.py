@@ -1,17 +1,43 @@
 #!/usr/bin/python3
 import MySQLdb as my
+import sqlite3
 
 # Reading data from Ensembl
-print("\nREADING ENSEMBLE TRANSCRIPT DATA")
+print("\nREADING ENSEMBLE TRANSCRIPT DATA...")
 # Core databases: <genus_species>_core_<version>_<assembly_version>
 # Ensembl Release 104 (May 2021)
 db = my.connect(host="ensembldb.ensembl.org", user="anonymous", passwd="",
                 db="homo_sapiens_core_108_38")
 c = db.cursor()
-no_rows3 = c.execute("""SELECT * FROM gene limit 5""")
-#print(c.fetchone())
+no_rows = c.execute("""SELECT transcript.stable_id, gene.stable_id, gene.description FROM gene join transcript on gene.gene_id=transcript.gene_id limit 100""")
+#print(c.fetchone()) # Helpfull to see what data is displayed
+i = 0
 result = c.fetchall()
-for field in result:
-    print("Example record:\n{} --> {} = {}".format(1,2,3)) # random input used
-    # tabeles should be joined to get all the necessary information
+#print(result)
 
+print("Example records:")
+for field in result:
+    if (i < 5):
+        print("{} --> {} = {}".format(field[0],field[1],field[2]))
+    i += 1
+
+
+# Print total amount of records
+print("Ensembl hg38 transcript table: {} ENST records".format(i))
+
+# First step: create database connection object
+conn = sqlite3.connect('ensembl.db')
+#Next create cursor object
+# and call its execute() method to perform SQL query
+cursor = conn.cursor()
+# Create table
+try: # Test the code
+    cursor.execute('''CREATE TABLE transcript_inf \
+            (ENST, ENSG, description)''')
+except sqlite3.OperationalError:
+    print("\nTable transcript_inf already exists\n")
+cursor.executemany('INSERT INTO transcript_inf VALUES (?,?,?)', result)
+# Save (commit) changes
+conn.commit()
+# Save (commit) changes
+conn.commit()
