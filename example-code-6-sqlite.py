@@ -46,6 +46,6 @@ c.execute('''UPDATE organisms SET common_name = ? WHERE tax_id = ? ''', \
 ################################################################################
 # Save (commit) changes
 conn.commit()
-# Close connection when done with it
-conn.close()
+# Save (commit) changes
+conn.commit()
 ################################################################################
