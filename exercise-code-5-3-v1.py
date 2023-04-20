@@ -23,7 +23,6 @@ for file in fastqc_list:
     # Check if the information is a folder
     # If true, use the sampleId for the word file
     if os.path.isdir(file):
-        
         sample_listname = file.split("_")
         # Add headers to each document
         document.add_heading("Sample: {}".format(sample_listname[0]), 0)
@@ -40,9 +39,9 @@ for file in fastqc_list:
                     # reading each line
                     for line in fileObj:
                         if re.search("Total Sequences",line):
+                            #Inefficient as the data is splitted on the tab and concatenated on tab afterwards
                             TotalSeq = line.split("\t")
                             document.add_paragraph("{} \t {}".format(TotalSeq[0], TotalSeq[1]))
-                fileObj.close()
             # Collect data from the summary file
             elif re.match("summary", info):
                 with open((file_dir + info), "r") as fileObj2:
@@ -52,7 +51,6 @@ for file in fastqc_list:
                             document.add_paragraph("{} \t {}".format(TotalSeq[1], TotalSeq[0]))
                             #Add empty paragraph for spacing
                     document.add_paragraph("")
-        fileObj2.close()
         # collect the image for each sampleId
         for info in fnmatch.filter(file_list,"Images"):
             #print(info)
@@ -69,7 +67,6 @@ for file in fastqc_list:
                     document.add_picture(image_loc, width=Cm(16))               
         # Adding a page break
         document.add_page_break()
-
 # Save document
 document.save('fastqc_summary.docx')
 
