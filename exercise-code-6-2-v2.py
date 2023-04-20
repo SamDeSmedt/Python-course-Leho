@@ -3,7 +3,6 @@ import MySQLdb as my
 import sqlite3
 import time
 
-code = input("Enter ENSG number: ")
 # Reading data from Ensembl
 print("\nREADING ENSEMBLE TRANSCRIPT DATA...")
 # Record start time
@@ -13,7 +12,7 @@ start = time.time()
 db = my.connect(host="ensembldb.ensembl.org", user="anonymous", passwd="",
                 db="homo_sapiens_core_108_38")
 c = db.cursor()
-no_rows = c.execute("""SELECT transcript.stable_id, gene.stable_id, gene.description FROM gene join transcript on gene.gene_id=transcript.gene_id where gene.stable_id = %s""",(code,))
+no_rows = c.execute("""SELECT transcript.stable_id, gene.stable_id, gene.description FROM gene left join transcript on gene.gene_id=transcript.gene_id""")
 #print(c.fetchone()) # Helpfull to see what data is displayed
 i = 0
 result = c.fetchall()
@@ -41,13 +40,20 @@ try: # Test the code
 except sqlite3.OperationalError:
     print("\nTable transcript_inf already exists\n")
 cursor.executemany('INSERT INTO transcript_inf VALUES (?,?,?)', result)
-# Save (commit) changes
-conn.commit()
-# Close connection
-conn.close()
 # Record time end
 end = time.time()
+# Ask input for the ensembl database
+ensg_input = input("What Ensembl gene do you want to search for? ")
+keyword = (ensg_input,)
+ensemble_enst = cursor.execute("SELECT * FROM transcript_inf where ensg=?", (keyword))
+print("Result: \n{}".format(cursor.fetchone()))
+
+# Save (commit) changes
+conn.commit()
+# Close the connection
+conn.close()
+db.close # From the UCSC database
 # print the difference between start
 # and end time in milli. secs
 print("The time of execution of above program is: \n\
-      {0:.2f} s".format((end-start)))
+      {} s".format((end-start)))
