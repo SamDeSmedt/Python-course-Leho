@@ -12,21 +12,15 @@ start = time.time()
 db = my.connect(host="ensembldb.ensembl.org", user="anonymous", passwd="",
                 db="homo_sapiens_core_108_38")
 c = db.cursor()
-no_rows = c.execute("""SELECT transcript.stable_id, gene.stable_id, gene.description FROM gene join transcript on gene.gene_id=transcript.gene_id""")
+no_rows = c.execute("""\
+    SELECT transcript.transcript_id, transcript.gene_id,\
+    transcript.stable_id, gene.stable_id, gene.description\
+    FROM gene \
+    left join transcript on gene.gene_id=transcript.gene_id"""
+                    )
+# 0 = transcript.transcript_id | 1 = transcript.gene_id
+# 2 = transcript.stable_id | 3 = gene.stable_id | 4 = gene.description
 #print(c.fetchone()) # Helpfull to see what data is displayed
-i = 0
-result = c.fetchall()
-#print(result)
-
-print("Example records:")
-for field in result:
-    if (i < 5):
-        print("{} --> {} = {}".format(field[0],field[1],field[2]))
-    i += 1
-
-
-# Print total amount of records
-print("Ensembl hg38 transcript table: {} ENST records".format(i))
 
 # First step: create database connection object
 conn = sqlite3.connect('ensembl.db')
@@ -39,14 +33,30 @@ try: # Test the code
             (ENST, ENSG, description)''')
 except sqlite3.OperationalError:
     print("\nTable transcript_inf already exists\n")
-cursor.executemany('INSERT INTO transcript_inf VALUES (?,?,?)', result)
+
+i = 0
+result = c.fetchall()
+#print(result)
+
+print("Example records:")
+for field in result:
+    if (i < 5):
+        print("{} --> {} = {}".format(field[2],field[3],field[4]))
+    i += 1
+    # Save in sql ensembl.db and commit
+    cursor.execute('INSERT INTO transcript_inf VALUES (?,?,?)', (field[2],field[3],field[4]))
+
+# Print total amount of records
+print("Ensembl hg38 transcript table: {} ENST records".format(i))
+
 # Save (commit) changes
 conn.commit()
-# Close connection
+# Close connections
+db.close()
 conn.close()
 # Record time end
 end = time.time()
 # print the difference between start
 # and end time in milli. secs
 print("The time of execution of above program is: \n\
-      {0:.2f} s".format((end-start)))
+      {:.2f} s".format((end-start)))

@@ -13,6 +13,7 @@ db = my.connect(host="genome-mysql.soe.ucsc.edu",
 c = db.cursor()
 no_rows = c.execute("""SELECT * FROM ncbiRefSeq where name like 'NM_%'""")
 print("Amount of mRNA transcripts in hg19: {}".format(no_rows))
+db.close()
 ######################################################################
 print("\nREADING DATA FROM UCSC DATABASE hg38")
 db = my.connect(host="genome-mysql.soe.ucsc.edu",
@@ -23,8 +24,8 @@ db = my.connect(host="genome-mysql.soe.ucsc.edu",
 c = db.cursor()
 no_rows2 = c.execute("""SELECT * FROM ncbiRefSeq where name like 'NM_%'""")
 print("Amount of mRNA transcripts in hg38: {}\n".format(no_rows2))
-
+db.close()
 ######################################################################
-#Calculate difference in trascript total
+#Calculate difference in transcript total
 total = no_rows2 - no_rows
 print("hg38 has {} more transcripts compared to hg19".format(total))
