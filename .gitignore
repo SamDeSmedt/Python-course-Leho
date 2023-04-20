@@ -16,3 +16,6 @@
 
 # Ignore dbs
 *.db
+
+# Ignore docx files
+*.docx
