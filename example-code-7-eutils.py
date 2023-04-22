@@ -5,7 +5,7 @@
 from eutils import Client
 # Initialize client that handles all caching and query
 # Using API key from NCBI account settings e.g. 
-eclient = Client(api_key="face39c63564e706a8dd9eaa4e46086a5a08")
+eclient = Client(api_key="cf9fdefa66d8e8b9e6ea5a8d27f0b8c59c09")
 print("\nUsing NCBI E-utilities in Python\n")
 ################################################################################
 # ESEARCH: search for e.g. genes, any valid NCBI query may be used
@@ -24,6 +24,7 @@ print("Ids: {}".format(gene_esearch.ids))
 # First two Ids: [114254422, 7157,...]
 print("1st gene Id: {}".format(gene_esearch.ids[0]))
 print("2nd gene Id: {}".format(gene_esearch.ids[1]))
+'''
 ################################################################################
 # EFETCH: get record using Id e.g. gene id 7157 for human TNF
 ################################################################################
@@ -56,4 +57,5 @@ for retstart in range(retmax):
     this_gene = gene_efetch.entrezgenes[0]
     print("HGNC: {}".format(this_gene.hgnc))
     print("Species: {}".format(this_gene.genus_species))
+    '''
 ################################################################################
