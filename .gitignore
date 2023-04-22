@@ -19,3 +19,7 @@
 
 # Ignore docx files
 *.docx
+
+*.json
+*.html
+*.fasta
