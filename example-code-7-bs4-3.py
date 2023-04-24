@@ -46,7 +46,7 @@ for td in td_separateur2:
     print("--> Name = {} | string = {}".format(td.name,td.string))
     c = c+1
 ################################################################################
-'''
+
 # Sleep for 3 sec
 import time
 print("\nSleeping...\n")
@@ -98,7 +98,7 @@ for td in td_separateur2:
         c = 1
 # Save file
 wb.save("GH100_all.xlsx")
-'''
+
 ################################################################################
 ## First try on smaller table: 
 #  http://www.cazy.org/GH156_all.html
