@@ -5,7 +5,7 @@
 import urllib.request
 import urllib.parse
 from bs4 import BeautifulSoup
-"""
+
 # Data from Human Cell Atlas
 # https://data.humancellatlas.org/apis
 ################################################################################
@@ -26,7 +26,7 @@ try:
     save_file.close()
 except Exception as e:
     print(str(e))
-"""
+
 ################################################################################
 # Data from Pfam
 # http://pfam.xfam.org/

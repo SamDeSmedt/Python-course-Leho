@@ -24,7 +24,7 @@ print("Ids: {}".format(gene_esearch.ids))
 # First two Ids: [114254422, 7157,...]
 print("1st gene Id: {}".format(gene_esearch.ids[0]))
 print("2nd gene Id: {}".format(gene_esearch.ids[1]))
-'''
+
 ################################################################################
 # EFETCH: get record using Id e.g. gene id 7157 for human TNF
 ################################################################################
@@ -57,5 +57,5 @@ for retstart in range(retmax):
     this_gene = gene_efetch.entrezgenes[0]
     print("HGNC: {}".format(this_gene.hgnc))
     print("Species: {}".format(this_gene.genus_species))
-    '''
+    
 ################################################################################
