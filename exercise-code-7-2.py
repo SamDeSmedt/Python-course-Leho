@@ -65,13 +65,13 @@ if os.path.exists(pic_loc):
 else:
     os.mkdir("Pictures")
     os.chdir(pic_loc)
-'''
+
 # Tag (img) contents
-figure_tag = soup.find_all("img",{"loading":"lazy"})
-for fig in figure_tag:
-    fig_url = base_url + fig["src"]
+img_tag = soup.find_all("img",{"loading":"lazy"})
+for img in img_tag:
+    img_url = base_url + img["src"]
     #filename = wget.download(fig_url)
-    print(fig_url)
+    print(img_url)
 
 # Metadata contents
 name_tag = soup.find_all("span",{"class":"species-common-name"})
@@ -81,7 +81,7 @@ for name in name_tag:
 scname_tag = soup.find_all("i",{"class":"species-scientific-name"})
 for scname in scname_tag:
     print(scname.string)
-'''
+
 loc = soup.find_all("a",{"class":"mod-stealth"})[2]
 '''
 i = 0
