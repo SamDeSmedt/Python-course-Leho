@@ -36,9 +36,9 @@ for ids in prot_esearch.ids:
     #print(refseq_list)
     refseq = prot_efetch.gbseqs[0]
     print(
-    "acv : {}\ncds: {}\ngi: {}\nlocus: {}\norganism: {}\n".format(prot_efetch.gbseqs[0].acv,prot_efetch.gbseqs[0].cds, prot_efetch.gbseqs[0].gi, prot_efetch.gbseqs[0].locus, prot_efetch.gbseqs[0].organism))
+    "acv : {}\ncds: {}\ngi: {}\nlocus: {}\norganism: {}\n".format(refseq.acv,refseq.cds, refseq.gi, refseq.locus, refseq.organism))
     print("Loop over Ids: \n" + "="*28)
-    print(">{}\n{}".format(refseq.gbseqs[0].acv, refseq.sequence))
+    print(">{}\n{}".format(refseq.acv, refseq.sequence))
     result_file.write(">"+refseq.locus+"\n"+refseq.sequence+"\n")
 result_file.close()
 
