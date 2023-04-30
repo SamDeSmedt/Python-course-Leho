@@ -49,13 +49,6 @@ base_url = "https://waarnemingen.be"
 params = urllib.parse.urlencode({'date_before': date_before, 'date_after': date_after, 'species_group': species_input, 'country_devision': provinces_input})
 url = "https://waarnemingen.be/photos/?%s" % params
 
-print("="*100)
-print("Running photo collecotor script\n{}".format(url))
-print("="*100)
-
-headers = {}
-headers['User-Agent'] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.190 Safari/537.36"
-
 # Create directory for pictures to store
 pic_loc = os.getcwd()+"/Pictures"
 # Check if location exists
@@ -64,6 +57,13 @@ if os.path.exists(pic_loc):
 else:
     os.mkdir("Pictures")
     os.chdir(pic_loc)
+
+print("="*100)
+print("Running photo collecotor script\n{}".format(url))
+print("="*100)
+
+headers = {}
+headers['User-Agent'] = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.190 Safari/537.36"
 
 # Opening csv file to write in
 with open("metadata.csv", mode = "w") as md_file:
@@ -81,7 +81,7 @@ with open("metadata.csv", mode = "w") as md_file:
     soup = BeautifulSoup(content, "html.parser")
 
     # Tag (figure) contents
-    figure_tag = soup.find_all("figure","lightbox-gallery")
+    figure_tag = soup.find_all("figure",{"class":"lightbox-gallery"})
     
     for fig in figure_tag:
         # Print the hits for this tag
