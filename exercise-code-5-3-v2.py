@@ -41,7 +41,7 @@ else:
 if args.outdir:
     output_dir = args.outdir
 else:
-    output_dir = "."
+    output_dir = "./"
 
 # Opening a blank document based on default template
 document = Document()
@@ -80,4 +80,4 @@ for folder in fastqc_list:
             # Add page brake
             document.add_page_break()
 # Save document
-document.save('fastqc_summary.docx')
+document.save(os.path.join(output_dir, 'fastqc_summary.docx'))
