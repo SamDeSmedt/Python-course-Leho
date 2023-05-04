@@ -68,7 +68,7 @@ for link in pagination.find_all('a')[:-1]:
     if href:
         urls.append(base_url[:-1] + href)
 
-print(urls)
+#print(urls)
 
 # Create directory for pictures to store
 pic_loc = os.getcwd()+"/Pictures"
