@@ -38,7 +38,7 @@ for ids in prot_esearch.ids:
     print(
     "acv : {}\ncds: {}\ngi: {}\nlocus: {}\norganism: {}\n".format(refseq.acv,refseq.cds, refseq.gi, refseq.locus, refseq.organism))
     print("Loop over Ids: \n" + "="*28)
-    print(">{}\n{}".format(refseq.acv, refseq.sequence))
+    print(">{}\n{}".format(refseq.locus, refseq.sequence))
     result_file.write(">"+refseq.locus+"\n"+refseq.sequence+"\n")
 result_file.close()
 
