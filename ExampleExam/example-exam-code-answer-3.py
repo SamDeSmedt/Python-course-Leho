@@ -53,7 +53,7 @@ for k,v in dictionary.items():
 set_keys = sorted(mapq.keys())
 
 print("Unique MAPQ values: {}".format((set_keys)))
-
+# orint the value per sorted key
 for key in set_keys:
     value = mapq[key]
     print("counting {} --> {}".format(key, value))
