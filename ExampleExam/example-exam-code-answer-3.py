@@ -40,8 +40,7 @@ print("First 5 records in dictionary:\n{}".format(res))
 res = dict(list(dictionary.items())[rev_limit:])
 print("Last 5 records in dictionary:\n{}".format(res))
 
-# Start new emtpy dictionary and new counter
-i = 0
+# Start new emtpy dictionary
 mapq = {}
 set = set()
 for k,v in dictionary.items():
