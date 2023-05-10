@@ -57,8 +57,8 @@ hdr_cells[1].text = 'Symbol'
 hdr_cells[2].text = 'Description'
 # Add data rows
 for gene_id, symbol, desc in genes:
-    row_cells = table.add_row().cells
-    row_cells[0].text = gene_id
+    row_cells = table.add_row().cells # Adding a row to the table
+    row_cells[0].text = gene_id # [] represents the position of the cell
     row_cells[1].text = symbol
     row_cells[2].text = desc
 # Save document
